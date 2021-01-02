@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.text.*?>
+<?import java.lang.*?>
+<?import java.util.*?>
+<?import javafx.scene.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<AnchorPane prefHeight="473.0" prefWidth="686.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="views.screen.RentalBikeScreen">
+   <children>
+      <Button layoutX="14.0" layoutY="14.0" mnemonicParsing="false" onAction="#changeSceneHome" text="Home" />
+      <Text layoutX="136.0" layoutY="128.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Bike ID" />
+      <Text layoutX="136.0" layoutY="168.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Deposit" />
+      <Text layoutX="136.0" layoutY="208.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Value" />
+      <Text layoutX="136.0" layoutY="250.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Kind" />
+      <TextField fx:id="bikeid" layoutX="236.0" layoutY="111.0" />
+      <TextField fx:id="deposit" layoutX="236.0" layoutY="151.0" />
+      <TextField fx:id="value" layoutX="236.0" layoutY="191.0" />
+      <TextField fx:id="kind" layoutX="236.0" layoutY="233.0" />
+      <Button layoutX="272.0" layoutY="320.0" mnemonicParsing="false" onAction="#confirm" text="Xác nhận thuê" />
+   </children>
+</AnchorPane>

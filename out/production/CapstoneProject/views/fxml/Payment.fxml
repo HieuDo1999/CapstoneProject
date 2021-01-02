@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.text.*?>
+<?import java.lang.*?>
+<?import java.util.*?>
+<?import javafx.scene.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<AnchorPane prefHeight="510.0" prefWidth="706.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="views.screen.PaymentScreen">
+   <children>
+      <Text layoutX="80.0" layoutY="135.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Card number" />
+      <Text layoutX="80.0" layoutY="189.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Card holder name" />
+      <Text layoutX="73.0" layoutY="259.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Experation date" />
+      <Text layoutX="80.0" layoutY="335.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Card sercurity code" />
+      <TextField fx:id="cardnumber" layoutX="228.0" layoutY="118.0" />
+      <TextField fx:id="cardholdername" layoutX="228.0" layoutY="172.0" />
+      <TextField fx:id="experationdate" layoutX="228.0" layoutY="243.0" />
+      <TextField fx:id="cardsercuritycode" layoutX="228.0" layoutY="318.0" />
+      <Button layoutX="315.0" layoutY="404.0" mnemonicParsing="false" onAction="#payment" text="Thanh toán" />
+      <Button layoutX="14.0" layoutY="14.0" mnemonicParsing="false" onAction="#changeSceneHome" text="Home" />
+      <Text layoutX="460.0" layoutY="135.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Bike ID" />
+      <Text layoutX="460.0" layoutY="181.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Customer ID" />
+      <TextField fx:id="customerid" layoutX="543.0" layoutY="164.0" />
+      <Label fx:id="bikeid" layoutX="543.0" layoutY="122.0" prefHeight="17.0" prefWidth="149.0" />
+   </children>
+</AnchorPane>
