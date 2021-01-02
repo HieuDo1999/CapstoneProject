@@ -30,5 +30,6 @@
       <Button layoutX="14.0" layoutY="258.0" mnemonicParsing="false" onAction="#liststandardebike" prefHeight="25.0" prefWidth="130.0" text="Danh sách xe điện đơn" />
       <Button layoutX="650.0" layoutY="94.0" mnemonicParsing="false" onAction="#detail" text="Chi tiết" />
       <Button layoutX="651.0" layoutY="144.0" mnemonicParsing="false" onAction="#rental" prefHeight="25.0" prefWidth="54.0" text="Thuê" />
+      <Button layoutX="651.0" layoutY="205.0" mnemonicParsing="false" onAction="#returnbike" text="Trả xe" />
    </children>
 </AnchorPane>

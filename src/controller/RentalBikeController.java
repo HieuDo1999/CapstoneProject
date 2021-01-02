@@ -7,7 +7,8 @@ import java.sql.SQLException;
 public class RentalBikeController {
     private Bike bike;
     public boolean checkStateBike(Integer id) throws SQLException {
-        this.bike= new Bike();
+        bike= new Bike();
+
         return bike.checkStateBike(id);
     }
 }

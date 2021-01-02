@@ -8,7 +8,7 @@
 
 <AnchorPane prefHeight="521.0" prefWidth="747.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="views.screen.StandardEBikeScreen">
    <children>
-      <TableView fx:id="standardebiketable" layoutX="22.0" layoutY="45.0" prefHeight="431.0" prefWidth="625.0">
+      <TableView fx:id="biketable" layoutX="22.0" layoutY="45.0" prefHeight="431.0" prefWidth="625.0">
         <columns>
           <TableColumn fx:id="id" prefWidth="75.0" text="ID" />
           <TableColumn fx:id="kind" prefWidth="75.0" text="Kind" />

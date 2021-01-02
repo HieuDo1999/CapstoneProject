@@ -2,7 +2,10 @@ package views.screen;
 
 
 
+import Payment.PaymentTransaction;
+import controller.PaymentController;
 import controller.RentalBikeController;
+import controller.TransactionController;
 import entity.bike.Bike;
 import entity.bike.TwinBike;
 import javafx.collections.FXCollections;
@@ -127,7 +130,7 @@ public class HomeScreen extends BaseScreen implements Initializable  {
 
 
     @FXML
-    public void findbikebyid() {
+    public void findbikebyid() throws SQLException {
         Integer bikeID= Integer.valueOf(bikeId.getText());
         if(bikeID!=null) {
             ListBike = FXCollections.observableArrayList(
@@ -185,24 +188,64 @@ public class HomeScreen extends BaseScreen implements Initializable  {
     }
 
     @FXML
-        void rental(ActionEvent e) throws IOException, SQLException {
+        void rental(ActionEvent e) throws IOException, SQLException, ClassNotFoundException {
         bike = biketable.getSelectionModel().getSelectedItem();
         if (bike != null) {
-            this.rentalBikeController= new RentalBikeController();
-            if(rentalBikeController.checkStateBike(bike.getId())) {
+            transactionController = new TransactionController();
+            PaymentTransaction paymentTransaction = transactionController.getTransaction("Group 7");
+            if (paymentTransaction==null) {
+                this.rentalBikeController = new RentalBikeController();
+                if (rentalBikeController.checkStateBike(bike.getId())) {
+                    Stage stage = (Stage) ((Node) e.getSource()).getScene().getWindow();
+                    FXMLLoader loader = new FXMLLoader();
+                    loader.setLocation(getClass().getResource("/views/fxml/RentalBike.fxml"));
+                    Parent detail = loader.load();
+                    Scene sceneDockDetail = new Scene(detail);
+                    RentalBikeScreen controller = loader.getController();
+                    controller.setRentalBike(bike);
+                    stage.setScene(sceneDockDetail);
+                } else {
+                    this.alertBikeNotValid();
+                }
+
+            } else {
+                Alert alert = new Alert(Alert.AlertType.INFORMATION);
+                alert.setTitle("Rental Bike");
+                alert.setHeaderText("Ban chi duoc thue 1 xe");
+                alert.show();
+            }
+        } else{
+            this.alertInputEmpty();
+        }
+
+    }
+
+    TransactionController transactionController;
+    @FXML
+    void returnbike(ActionEvent e) throws SQLException, ClassNotFoundException, IOException {
+        transactionController= new TransactionController();
+        PaymentTransaction paymentTransaction=transactionController.getTransaction("Group 7");
+        if(paymentTransaction!=null && (paymentTransaction.getStatus()==0)) {
+            if (paymentTransaction.getStatus() == 0) {
                 Stage stage = (Stage) ((Node) e.getSource()).getScene().getWindow();
                 FXMLLoader loader = new FXMLLoader();
-                loader.setLocation(getClass().getResource("/views/fxml/RentalBike.fxml"));
+                loader.setLocation(getClass().getResource("/views/fxml/Return.fxml"));
                 Parent detail = loader.load();
                 Scene sceneDockDetail = new Scene(detail);
-                RentalBikeScreen controller = loader.getController();
-                controller.setRentalBike(bike);
+                ReturnScreen controller = loader.getController();
+                controller.setReturn(paymentTransaction);
                 stage.setScene(sceneDockDetail);
-            }else{
-                this.alertBikeNotValid();
+            } else {
+                Alert alert = new Alert(Alert.AlertType.INFORMATION);
+                alert.setTitle("Rental Bike");
+                alert.setHeaderText("Ban chi duoc thue 1 xe");
+                alert.show();
             }
         }else{
-            this.alertInputEmpty();
+            Alert alert = new Alert(Alert.AlertType.INFORMATION);
+            alert.setTitle("Rental Bike");
+            alert.setHeaderText("Ban chua thue xe");
+            alert.show();
         }
     }
 

@@ -23,6 +23,7 @@ public class Bike implements CalculateFees {
     String description;
     String status;
 
+
     /**
      * @param id
      * @param kind
@@ -122,13 +123,21 @@ public class Bike implements CalculateFees {
     }
 
     public void changeStateBike(Integer id) throws SQLException {
+
         Bike bike = this.getBikeById(id);
         String sql = null;
-        sql = "update  bike   set status='dang cho thue' where id=" + "'" + id + "'";
+        if(bike.getStatus().equals("dang cho thue")) {
+
+            sql = "update  bike  set status='hoat dong' where id=" + "'" + id + "'";
+        }else{
+            sql = "update  bike  set status='dang cho thue' where id=" + "'" + id + "'";
+        }
         Connection conn = (Connection) ConnectionDB.ConnectionDB();
         PreparedStatement ps = conn.prepareStatement(sql, Statement.RETURN_GENERATED_KEYS);
         ps.executeUpdate();
     }
+
+
 
     /**
      * @param id
@@ -144,12 +153,15 @@ public class Bike implements CalculateFees {
     }
 
 
+
+
     /**
      * @param id
      * @return bike theo id
      */
+    /// chua da hinh tinh fees
     public Bike getBikeById(Integer id) {
-        String sql = "select * from bike where id =" + id;
+        String sql = "select * from  bike  where id =" + id;
         Bike bike = null;
         try {
             conn = (Connection) ConnectionDB.ConnectionDB();
@@ -157,7 +169,8 @@ public class Bike implements CalculateFees {
             st = (Statement) conn.createStatement();
             rs = st.executeQuery(sql);
             rs.next();
-            bike = new Bike(
+
+            bike = new StandardBike(
                     rs.getInt("id"),
                     rs.getString("kind"),
                     rs.getInt("dock_id"),

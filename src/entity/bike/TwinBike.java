@@ -67,7 +67,7 @@ public class TwinBike extends Bike{
      * @return bike
      */
     @Override
-    public Bike getBikeById(Integer id){
+    public TwinBike getBikeById(Integer id){
         String sql="select * from bike where id ="+id;
         TwinBike bike = null;
         try {

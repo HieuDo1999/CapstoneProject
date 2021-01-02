@@ -9,6 +9,7 @@ import javafx.scene.control.Alert;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
 
+import java.io.IOException;
 import java.sql.SQLException;
 
 
@@ -39,7 +40,7 @@ public class PaymentScreen extends BaseScreen {
 
 
     @FXML
-    void payment(ActionEvent event) throws SQLException, ClassNotFoundException {
+    void payment(ActionEvent event) throws SQLException, ClassNotFoundException, IOException {
         if(!(customerid.getText().equals("")&&
                 cardholdername.getText().equals("")&&
                 experationdate.getText().equals("")&&
@@ -57,6 +58,7 @@ public class PaymentScreen extends BaseScreen {
             Alert alert = new Alert(Alert.AlertType.INFORMATION);
             alert.setHeaderText("Thanh toan thanh cong");
             alert.show();
+            this.changeSceneHome(event);
 
 
         }else {

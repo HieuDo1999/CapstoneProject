@@ -38,7 +38,7 @@ public class TwinBikeScreen  extends BaseScreen{
     private TableColumn<TwinBike, Integer> value;
 
     @FXML
-    private TableView<Bike> twinbiketable;
+    private TableView<Bike> biketable;
 
     @FXML
     private TableColumn<TwinBike, String> status;
@@ -63,7 +63,7 @@ public class TwinBikeScreen  extends BaseScreen{
         value.setCellValueFactory(new PropertyValueFactory<TwinBike,Integer>("value"));
         description.setCellValueFactory(new PropertyValueFactory<TwinBike,String>("description"));
         status.setCellValueFactory(new PropertyValueFactory<TwinBike,String>("status"));
-        twinbiketable.setItems(ListTwinBike);
+        biketable.setItems(ListTwinBike);
     }
     public void changeSceneHome(ActionEvent e){
         this.changeSceneHome(e);
@@ -78,11 +78,11 @@ public class TwinBikeScreen  extends BaseScreen{
         value.setCellValueFactory(new PropertyValueFactory<TwinBike,Integer>("value"));
         description.setCellValueFactory(new PropertyValueFactory<TwinBike,String>("description"));
         status.setCellValueFactory(new PropertyValueFactory<TwinBike,String>("status"));
-        twinbiketable.setItems(twinbike);
+        biketable.setItems(twinbike);
     }
     @FXML
     void rental(javafx.event.ActionEvent e) throws IOException, SQLException {
-        bike = twinbiketable.getSelectionModel().getSelectedItem();
+        bike = biketable.getSelectionModel().getSelectedItem();
         if (bike != null) {
             this.rentalBikeController= new RentalBikeController();
             if(rentalBikeController.checkStateBike(bike.getId())) {

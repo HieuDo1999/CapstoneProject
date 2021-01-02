@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.text.*?>
+<?import java.lang.*?>
+<?import java.util.*?>
+<?import javafx.scene.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+
+<AnchorPane prefHeight="409.0" prefWidth="607.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="views.screen.ReturnScreen">
+   <children>
+      <Text layoutX="101.0" layoutY="112.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Deposit" />
+      <Text layoutX="101.0" layoutY="161.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Fees" />
+      <Text layoutX="101.0" layoutY="209.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Dock id" />
+      <Text layoutX="101.0" layoutY="66.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Bike id" />
+      <Button layoutX="228.0" layoutY="346.0" mnemonicParsing="false" onAction="#confirm" text="Trả xe" />
+      <Button layoutX="14.0" layoutY="14.0" mnemonicParsing="false" text="Home" />
+      <Text layoutX="102.0" layoutY="253.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Time Start" />
+      <Text layoutX="102.0" layoutY="297.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Time now" />
+      <Label fx:id="bikeid" layoutX="228.0" layoutY="53.0" text="Label" />
+      <Label fx:id="deposit" layoutX="228.0" layoutY="99.0" text="Label" />
+      <Label fx:id="fees" layoutX="228.0" layoutY="148.0" text="Label" />
+      <Label fx:id="start" layoutX="228.0" layoutY="240.0" text="Label" />
+      <Label fx:id="now" layoutX="228.0" layoutY="284.0" text="Label" />
+      <TextField fx:id="dockid" layoutX="229.0" layoutY="192.0" />
+   </children>
+</AnchorPane>

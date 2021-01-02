@@ -46,7 +46,7 @@ public class StandardEBikeScreen extends BaseScreen {
     private TableColumn<StandardEBike, Integer> value;
 
     @FXML
-    private TableView<Bike> standardebiketable;
+    private TableView<Bike> biketable;
 
     @FXML
     private TableColumn<StandardEBike, String> status;
@@ -61,7 +61,7 @@ public class StandardEBikeScreen extends BaseScreen {
         return standardEBike.getListBike();
     }
 
-    public Bike getBikeById(Integer id){
+    public Bike getBikeById(Integer id) throws SQLException {
         this.standardEBike= new StandardEBike();
         return standardEBike.getBikeById(id);
     }
@@ -79,7 +79,7 @@ public class StandardEBikeScreen extends BaseScreen {
         status.setCellValueFactory(new PropertyValueFactory<StandardEBike,String>("status"));
         time.setCellValueFactory(new PropertyValueFactory<StandardEBike,Integer>("time"));
         energy.setCellValueFactory(new PropertyValueFactory<StandardEBike,Integer>("energy"));
-        standardebiketable.setItems(ListStandardEBike);
+        biketable.setItems(ListStandardEBike);
     }
     public void detail(Integer ID) throws SQLException, ClassNotFoundException {
         standardebike= FXCollections.observableArrayList(
@@ -93,14 +93,14 @@ public class StandardEBikeScreen extends BaseScreen {
         status.setCellValueFactory(new PropertyValueFactory<StandardEBike,String>("status"));
         time.setCellValueFactory(new PropertyValueFactory<StandardEBike,Integer>("time"));
         energy.setCellValueFactory(new PropertyValueFactory<StandardEBike,Integer>("energy"));
-        standardebiketable.setItems(standardebike);
+        biketable.setItems(standardebike);
     }
     public void changeSceneHome(ActionEvent e){
         this.changeSceneHome(e);
     }
     @FXML
     void rental(javafx.event.ActionEvent e) throws IOException, SQLException {
-        bike = standardebiketable.getSelectionModel().getSelectedItem();
+        bike = biketable.getSelectionModel().getSelectedItem();
         if (bike != null) {
             this.rentalBikeController= new RentalBikeController();
             if(rentalBikeController.checkStateBike(bike.getId())) {

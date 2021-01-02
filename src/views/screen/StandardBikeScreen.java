@@ -38,7 +38,7 @@ public class StandardBikeScreen extends BaseScreen {
     private TableColumn<StandardBike, Integer> value;
 
     @FXML
-    private TableView<Bike> standardbiketable;
+    private TableView<Bike> biketable;
 
     @FXML
     private TableColumn<StandardBike, String> status;
@@ -53,7 +53,7 @@ public class StandardBikeScreen extends BaseScreen {
         this.standardBike= new StandardBike();
         return standardBike.getListBike();
     }
-    public Bike getBikeById(Integer id){
+    public Bike getBikeById(Integer id) throws SQLException {
         this.standardBike= new StandardBike();
         return standardBike.getBikeById(id);
     }
@@ -67,7 +67,7 @@ public class StandardBikeScreen extends BaseScreen {
         value.setCellValueFactory(new PropertyValueFactory<StandardBike,Integer>("value"));
         description.setCellValueFactory(new PropertyValueFactory<StandardBike,String>("description"));
         status.setCellValueFactory(new PropertyValueFactory<StandardBike,String>("status"));
-        standardbiketable.setItems(ListStandardBike);
+        biketable.setItems(ListStandardBike);
     }
     public void changeSceneHome(ActionEvent e){
         this.changeSceneHome(e);
@@ -82,11 +82,11 @@ public class StandardBikeScreen extends BaseScreen {
         value.setCellValueFactory(new PropertyValueFactory<StandardBike,Integer>("value"));
         description.setCellValueFactory(new PropertyValueFactory<StandardBike,String>("description"));
         status.setCellValueFactory(new PropertyValueFactory<StandardBike,String>("status"));
-        standardbiketable.setItems(standardbike);
+        biketable.setItems(standardbike);
     }
     @FXML
     void rental(javafx.event.ActionEvent e) throws IOException, SQLException {
-        bike = standardbiketable.getSelectionModel().getSelectedItem();
+        bike = biketable.getSelectionModel().getSelectedItem();
         if (bike != null) {
             this.rentalBikeController= new RentalBikeController();
             if(rentalBikeController.checkStateBike(bike.getId())) {
